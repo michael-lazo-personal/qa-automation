@@ -1,7 +1,6 @@
 package com.mlazo.test;
 
 import com.mlazo.service.Users;
-import io.restassured.response.Response;
 
 import static org.hamcrest.Matchers.*;
 
@@ -13,8 +12,7 @@ public class UsersTest {
     @Test
     public void usernameExists() throws MalformedURLException {
         Users users = new Users();
-        Response response = users.getUsers();
-        response.then().statusCode(200)
+        users.getUsers().then().statusCode(200)
                 .body("username", not(isEmptyOrNullString()));
     }
 }
